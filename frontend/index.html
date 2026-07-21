@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waisman's Dresses - Appointment Scheduling</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Waisman's Dresses</h1>
+            <nav>
+                <button id="admin-toggle-btn">Admin Portal</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- User Booking Section -->
+        <section id="booking-section">
+            <div class="card">
+                <h2>Schedule Your Fitting</h2>
+                <p class="subtitle">Select a date to see available appointment windows.</p>
+                
+                <div class="calendar-controls">
+                    <input type="date" id="date-picker">
+                </div>
+
+                <div id="slots-container" class="slots-grid">
+                    <!-- Slots will be injected here -->
+                    <p class="placeholder-text">Please select a date to view availability.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Panel Section (Hidden by default) -->
+        <section id="admin-section" class="hidden">
+            <div class="card admin-card">
+                <div class="admin-header">
+                    <h2>Admin Dashboard</h2>
+                    <button id="close-admin-btn" class="btn-text">&times; Close</button>
+                </div>
+
+                <div id="admin-login" class="admin-form">
+                    <h3>Authentication Required</h3>
+                    <div class="input-group">
+                        <input type="password" id="admin-password" placeholder="Enter Admin Password">
+                        <button id="login-btn">Login</button>
+                    </div>
+                </div>
+
+                <div id="admin-controls" class="hidden">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="manage-times">Reception Times</button>
+                        <button class="tab-btn" data-tab="view-appointments">View Appointments</button>
+                    </div>
+
+                    <div id="manage-times" class="tab-content active">
+                        <h3>Set Reception Hours</h3>
+                        <form id="reception-form" class="admin-form">
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label>Date</label>
+                                    <input type="date" id="rt-date" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Start Time</label>
+                                    <input type="time" id="rt-start" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>End Time</label>
+                                    <input type="time" id="rt-end" required>
+                                </div>
+                            </div>
+                            <button type="submit">Add Window</button>
+                        </form>
+                        <div id="reception-list">
+                            <!-- List of existing windows -->
+                        </div>
+                    </div>
+
+                    <div id="view-appointments" class="tab-content">
+                        <h3>Upcoming Appointments</h3>
+                        <div id="appointments-list">
+                            <!-- List of appointments -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal hidden">
+        <div class="modal-content card">
+            <span class="close-modal">&times;</span>
+            <h3>Complete Your Booking</h3>
+            <p id="selected-slot-display"></p>
+            <form id="booking-form">
+                <input type="hidden" id="booking-time">
+                <input type="hidden" id="booking-rt-id">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="cust-name" required placeholder="Jane Doe">
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="cust-email" required placeholder="jane@example.com">
+                </div>
+                <div class="input-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="cust-phone" required placeholder="555-0123">
+                </div>
+                <button type="submit" class="btn-primary">Confirm Appointment</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
