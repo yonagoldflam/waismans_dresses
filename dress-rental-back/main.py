@@ -21,7 +21,7 @@ async def lifespan(app: FastAPI):
 # for example: https://app.example.com,https://admin.example.com
 frontend_origins = os.getenv(
     "FRONTEND_ORIGINS",
-    "http://localhost:3000,http://localhost:5173,http://localhost:5500",
+    "http://18.197.154.189,http://localhost:3000,http://localhost:5500",
 ).split(",")
 
 app = FastAPI(title="Dress Rental API", version="1.0.0", lifespan=lifespan)

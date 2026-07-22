@@ -1,3 +1,3 @@
 ﻿// The standalone frontend needs only this backend URL.
 // Do not add a trailing slash.
-const API_BASE_URL = "http://localhost:8000/api/v1";
+const API_BASE_URL = "/api/v1";
