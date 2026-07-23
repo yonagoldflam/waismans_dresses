@@ -55,10 +55,11 @@ class DSQLDatabase:
             kwargs=self._get_connection_params,
             min_size=2,
             max_size=20,
-            max_lifetime=3300,
+            max_lifetime=300,
+            max_idle=120,
+            check=AsyncConnectionPool.check_connection,
             open=False,
         )
-
         await self.pool.open()
         await self.pool.wait()
 
