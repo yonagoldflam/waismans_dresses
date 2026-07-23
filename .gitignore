@@ -20,7 +20,7 @@ ENV/
 *.bak
 *.tmp
 .DS_Store
-dress-rental-back/.env
-dress-rental-back/.venv
+backend/.env
+backend/.venv
 .venv
 .idea
